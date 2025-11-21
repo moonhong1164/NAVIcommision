@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나비 타로 커미션</title>
+
+<style>
+:root{
+  --bg: #1a072d;
+  --card: rgba(40, 10, 70, 0.94);
+  --accent: #a855f7;
+  --accent-soft: rgba(168, 85, 247, 0.2);
+  --text: #f8f5ff;
+  --muted: #d1b3ff;
+  --border: rgba(200, 150, 255, 0.4);
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family: 'Pretendard','Apple SD Gothic Neo',sans-serif;
+  background: radial-gradient(circle at top, #2b064d, #0a0015 70%);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{ color:inherit; text-decoration:none; }
+
+.container{
+  max-width:980px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* 배경 반짝임 */
+.butterfly-bg{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background-image:
+    radial-gradient(2px 2px at 15% 20%, rgba(255,255,255,.6), transparent),
+    radial-gradient(1.5px 1.5px at 70% 35%, rgba(186,130,255,.8), transparent),
+    radial-gradient(2px 2px at 40% 78%, rgba(255,200,255,.7), transparent),
+    radial-gradient(1.5px 1.5px at 90% 60%, rgba(255,255,255,.5), transparent);
+  animation: spark 10s ease-in-out infinite alternate;
+}
+
+@keyframes spark{
+  0%{ opacity:.4; }
+  100%{ opacity:.8; }
+}
+
+/* 헤더 */
+header{
+  backdrop-filter: blur(16px);
+  background: linear-gradient(to bottom, rgba(15,0,30,.8), transparent);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:1.1rem;
+}
+
+nav a{
+  margin-left:14px;
+  font-size:0.85rem;
+  opacity:.85;
+}
+
+nav a:hover{ opacity:1; }
+
+/* HERO */
+.hero{
+  padding:90px 0;
+}
+
+.hero h1{
+  font-size:2.4rem;
+  margin-bottom:14px;
+  line-height:1.3;
+}
+
+.hero h1 span{
+  background: linear-gradient(135deg,#c084fc,#e879f9,#a855f7);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:560px;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+
+.btn{
+  padding:12px 22px;
+  border-radius:999px;
+  border:none;
+  background:linear-gradient(135deg,#a855f7,#e879f9);
+  color:white;
+  font-weight:500;
+  box-shadow:0 15px 40px rgba(168,85,247,0.5);
+  cursor:pointer;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+/* 카드형 공통 */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  padding:22px;
+  margin-bottom:30px;
+}
+
+/* 가격 */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.price{
+  position:relative;
+  padding:20px;
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  background:rgba(30,0,60,.9);
+  transition:.25s;
+}
+
+.price:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 40px rgba(168,85,247,0.5);
+}
+
+.price span{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:var(--accent-soft);
+  border:1px solid var(--accent);
+  padding:3px 8px;
+  border-radius:20px;
+  font-size:.7rem;
+}
+
+.price h3{margin:0 0 6px;}
+
+.price small{
+  color:var(--muted);
+  font-size:.75rem;
+}
+
+.price .hover{
+  margin-top:8px;
+  font-size:.75rem;
+  color:var(--muted);
+  border-top:1px dashed var(--border);
+  padding-top:6px;
+  opacity:0;
+  transition:.3s;
+}
+
+.price:hover .hover{opacity:1}
+
+/* 종류 */
+.types{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:14px;
+}
+
+.type{
+  border:1px solid var(--border);
+  padding:14px;
+  border-radius:16px;
+  background:rgba(25,0,40,.9);
+}
+
+/* 링크 */
+.links a{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  margin-top:10px;
+  background:rgba(40,0,60,.8);
+}
+
+/* 푸터 */
+footer{
+  text-align:center;
+  padding:40px 0;
+  font-size:.75rem;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="butterfly-bg"></div>
+
+<header>
+  <div class="container nav">
+    <div class="logo">🦋 나비 타로</div>
+    <nav>
+      <a href="#about">소개</a>
+      <a href="#price">요금</a>
+      <a href="#type">종류</a>
+      <a href="#request">신청</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero container">
+  <h1><span>나비 타로</span><br>변화의 순간, 날개를 펼치다</h1>
+  <p>
+    나비는 작은 흔들림 속에서도 자신만의 길을 찾아갑니다.  
+    이 리딩은 정답이 아니라, 당신 안의 **변화 가능한 미래**를 보여주는 시간입니다.
+  </p>
+  <button class="btn" onclick="goNavi()">🦋 문의하기</button>
+</section>
+
+<section id="about" class="container card">
+  <h2>리더 소개</h2>
+  <p style="color:var(--muted)">
+    안녕하세요, 타로 리더 <strong>나비</strong>입니다.<br>
+    감정과 무의식, 변화를 중심으로한 리딩을 진행합니다.
+  </p>
+  <ul>
+    <li>✔ 연애 / 감정 / 관계 중심</li>
+    <li>✔ 힐링 · 내면 · 변화</li>
+    <li>✔ 보라색 에너지 / 직관 / 감성</li>
+  </ul>
+</section>
+
+<section id="price" class="container card">
+  <h2>요금 안내</h2>
+
+  <div class="cards-grid">
+
+    <div class="price">
+      <span>15 MIN</span>
+      <h3>15분 채팅 상담</h3>
+      <p>10,000원</p>
+      <small>간단한 핵심 질문</small>
+      <div class="hover">빠른 메시지 1~2가지</div>
+    </div>
+
+    <div class="price">
+      <span>20 MIN</span>
+      <h3>20분 채팅 상담</h3>
+      <p>15,000원</p>
+      <small>흐름 + 조언</small>
+      <div class="hover">카드 다수 사용</div>
+    </div>
+
+    <div class="price">
+      <span>30 MIN</span>
+      <h3>30분 채팅 상담</h3>
+      <p>20,000원</p>
+      <small>심층 리딩</small>
+      <div class="hover">과거-현재-미래 해석</div>
+    </div>
+
+    <div class="price">
+      <span>Q & A</span>
+      <h3>개별 질문</h3>
+      <p>5,000원</p>
+      <small>한 질문당</small>
+      <div class="hover">짧고 명확한 질문 추천</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="type" class="container card">
+  <h2>타로 종류</h2>
+
+  <div class="types">
+
+    <div class="type">
+      <strong>💗 연애 타로</strong>
+      <p>상대의 마음 · 관계 흐름</p>
+    </div>
+
+    <div class="type">
+      <strong>🌙 내면 · 힐링</strong>
+      <p>불안 · 자존감 · 회복</p>
+    </div>
+
+    <div class="type">
+      <strong>🎓 진로 · 선택</strong>
+      <p>미래 방향성과 가능성</p>
+    </div>
+
+    <div class="type">
+      <strong>✨ 변화 타로</strong>
+      <p>지금 인생의 전환점</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="request" class="container card" style="text-align:center">
+  <h2>신청 및 문의</h2>
+  <p style="color:var(--muted)">
+    아래 카카오톡 링크로 문의해 주세요
+  </p>
+
+  <div class="links">
+    <a href="https://open.kakao.com/me/navitarot01" target="_blank">
+      💬 나비 타로 카카오톡 바로가기
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 나비타로 — Made with 🦋 & 💜
+</footer>
+
+<script>
+function goNavi(){
+  window.open("https://open.kakao.com/me/navitarot01","_blank");
+}
+</script>
+
+</body>
+</html>
