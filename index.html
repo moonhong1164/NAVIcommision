@@ -7,23 +7,24 @@
   <style>
     :root {
       /* 연보라 테마 */
-      --bg-main: #f5f3ff;
-      --bg-soft: #faf5ff;
+      --bg-top: #f5f3ff;
+      --bg-middle: #fdf2ff;
+      --bg-bottom: #fff7ff;
+
       --card: #ffffff;
-      --card-soft: #f4f3ff;
+      --card-soft: #f9f5ff;
 
-      --accent: #a855f7;             /* 라일락 포인트 */
-      --accent-soft: rgba(168, 85, 247, 0.14);
-      --accent-strong: #ec4899;      /* 보조 포인트 */
+      --accent: #a855f7; /* 연보라 포인트 */
+      --accent-soft: rgba(168, 85, 247, 0.16);
 
-      --text: #111827;
+      --text: #1f2933;
       --muted: #6b7280;
 
-      --border: rgba(196, 181, 253, 0.9);
-      --shadow-soft: 0 16px 40px rgba(148, 163, 184, 0.25);
+      --border: rgba(196, 181, 253, 0.8);
 
       --radius-lg: 18px;
       --radius-xl: 26px;
+      --shadow-soft: 0 18px 40px rgba(148, 124, 255, 0.18);
     }
 
     * {
@@ -35,11 +36,11 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Pretendard",
         "Noto Sans KR", sans-serif;
-      color: var(--text);
       background:
-        radial-gradient(circle at 0% 0%, #e0e7ff 0, transparent 50%),
-        radial-gradient(circle at 100% 100%, #fee2ff 0, transparent 55%),
-        linear-gradient(180deg, var(--bg-main), var(--bg-soft));
+        radial-gradient(circle at 0% 0%, #e9d5ff 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #e0e7ff 0, transparent 55%),
+        linear-gradient(180deg, var(--bg-top), var(--bg-middle), var(--bg-bottom));
+      color: var(--text);
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
@@ -63,11 +64,11 @@
       pointer-events: none;
       z-index: -1;
       background-image:
-        radial-gradient(2px 2px at 10% 20%, rgba(148, 163, 184, 0.7) 0, transparent 50%),
-        radial-gradient(1.5px 1.5px at 80% 30%, rgba(196, 181, 253, 0.85) 0, transparent 50%),
-        radial-gradient(1.5px 1.5px at 30% 80%, rgba(244, 114, 182, 0.75) 0, transparent 50%),
-        radial-gradient(2px 2px at 60% 60%, rgba(226, 232, 240, 0.9) 0, transparent 55%);
-      opacity: 0.75;
+        radial-gradient(2px 2px at 10% 20%, rgba(129, 140, 248, 0.7) 0, transparent 50%),
+        radial-gradient(1.5px 1.5px at 80% 30%, rgba(196, 181, 253, 0.9) 0, transparent 50%),
+        radial-gradient(1.5px 1.5px at 30% 80%, rgba(244, 187, 255, 0.8) 0, transparent 50%),
+        radial-gradient(2px 2px at 60% 60%, rgba(226, 232, 240, 0.7) 0, transparent 55%);
+      opacity: 0.7;
       animation: twinkle 10s ease-in-out infinite alternate;
     }
 
@@ -85,7 +86,7 @@
       z-index: 50;
       backdrop-filter: blur(18px);
       background: rgba(250, 245, 255, 0.92);
-      border-bottom: 1px solid rgba(196, 181, 253, 0.8);
+      border-bottom: 1px solid rgba(196, 181, 253, 0.7);
     }
 
     .nav {
@@ -112,10 +113,11 @@
       display: flex;
       gap: 18px;
       font-size: 0.9rem;
+      color: var(--muted);
     }
 
     .nav-links a {
-      opacity: 0.85;
+      opacity: 0.9;
       padding: 6px 10px;
       border-radius: 999px;
       transition: 0.2s;
@@ -124,6 +126,7 @@
     .nav-links a:hover {
       opacity: 1;
       background-color: rgba(221, 214, 254, 0.9);
+      color: var(--text);
     }
 
     .nav-cta {
@@ -132,14 +135,14 @@
       border: 1px solid var(--accent);
       background: linear-gradient(
         135deg,
-        rgba(168, 85, 247, 0.9),
-        rgba(236, 72, 153, 0.9)
+        rgba(168, 85, 247, 0.22),
+        rgba(244, 114, 182, 0.25)
       );
       font-size: 0.85rem;
       display: none;
-      color: #fff;
+      color: var(--text);
       cursor: pointer;
-      box-shadow: 0 12px 26px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 10px 26px rgba(167, 139, 250, 0.35);
     }
 
     /* 섹션 공통 */
@@ -189,11 +192,10 @@
       font-size: 2.2rem;
       line-height: 1.25;
       margin-bottom: 14px;
-      color: #111827;
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, #f9a8ff, #c4b5fd, #a855f7);
+      background: linear-gradient(135deg, #c4b5fd, #a855f7, #ec4899);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -216,18 +218,18 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid rgba(196, 181, 253, 0.9);
-      background-color: rgba(250, 250, 255, 0.95);
+      background-color: rgba(255, 255, 255, 0.85);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: var(--muted);
+      color: var(--text);
     }
 
     .badge-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: radial-gradient(circle, #ec4899, #a855f7);
+      background: radial-gradient(circle, #f472b6, #a855f7);
     }
 
     .hero-actions {
@@ -242,8 +244,8 @@
       border-radius: 999px;
       padding: 9px 18px;
       font-size: 0.93rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #fff;
+      background: linear-gradient(135deg, var(--accent), #ec4899);
+      color: white;
       cursor: pointer;
       box-shadow: 0 12px 30px rgba(168, 85, 247, 0.5);
       display: inline-flex;
@@ -254,14 +256,14 @@
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 15px 36px rgba(236, 72, 153, 0.6);
+      box-shadow: 0 15px 36px rgba(147, 51, 234, 0.6);
     }
 
     .btn-secondary {
       border-radius: 999px;
       padding: 8px 15px;
       font-size: 0.86rem;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.8);
       border: 1px solid rgba(196, 181, 253, 0.9);
       color: var(--muted);
       display: inline-flex;
@@ -272,26 +274,25 @@
     }
 
     .btn-secondary:hover {
-      background-color: #ede9fe;
-      border-color: #a855f7;
+      background-color: rgba(221, 214, 254, 0.9);
+      border-color: rgba(168, 85, 247, 0.9);
     }
 
     .hero-note {
       font-size: 0.78rem;
       color: var(--muted);
-      opacity: 0.95;
+      opacity: 0.9;
     }
 
     .hero-card {
       border-radius: var(--radius-xl);
       padding: 18px 16px;
-      background: radial-gradient(circle at top, #fdf2ff, #ffffff 80%);
+      background: radial-gradient(circle at top, #ede9fe, #fdf2ff 80%);
       box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(196, 181, 253, 0.9);
       position: relative;
       overflow: hidden;
       animation: floatCard 4s ease-in-out infinite alternate;
-      color: var(--text);
     }
 
     @keyframes floatCard {
@@ -304,8 +305,8 @@
       position: absolute;
       inset: -40%;
       background:
-        radial-gradient(circle at 10% 0, rgba(244, 114, 182, 0.16), transparent),
-        radial-gradient(circle at 90% 100%, rgba(196, 181, 253, 0.18), transparent);
+        radial-gradient(circle at 10% 0, rgba(244, 114, 182, 0.12), transparent),
+        radial-gradient(circle at 90% 100%, rgba(168, 85, 247, 0.12), transparent);
       opacity: 0.9;
       z-index: -1;
     }
@@ -316,7 +317,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-weight: 600;
+      color: var(--text);
     }
 
     .hero-card-sub {
@@ -335,8 +336,8 @@
     .mini-card {
       border-radius: 14px;
       padding: 9px;
-      background-color: var(--card-soft);
-      border: 1px solid rgba(196, 181, 253, 0.9);
+      background-color: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(221, 214, 254, 0.9);
       font-size: 0.78rem;
     }
 
@@ -359,7 +360,7 @@
       font-size: 0.75rem;
       color: var(--muted);
       padding-top: 6px;
-      border-top: 1px dashed rgba(196, 181, 253, 0.9);
+      border-top: 1px dashed rgba(196, 181, 253, 0.8);
       margin-top: 4px;
       flex-wrap: wrap;
       gap: 6px;
@@ -379,7 +380,6 @@
       padding: 18px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow-soft);
-      color: var(--text);
     }
 
     .about-tag {
@@ -414,9 +414,8 @@
       margin-top: 10px;
       padding: 9px;
       border-radius: 12px;
-      background-color: #f5f3ff;
-      border: 1px dashed rgba(236, 72, 153, 0.7);
-      color: var(--muted);
+      background-color: var(--card-soft);
+      border: 1px dashed rgba(168, 85, 247, 0.7);
     }
 
     /* 가격 */
@@ -435,14 +434,14 @@
       position: relative;
       overflow: hidden;
       transition: transform 0.2s ease, box-shadow 0.2s ease,
-        border-color 0.2s ease;
-      color: var(--text);
+        border-color 0.2s ease, background-color 0.2s ease;
     }
 
     .price-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(148, 163, 184, 0.45);
-      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(167, 139, 250, 0.4);
+      border-color: rgba(168, 85, 247, 0.95);
+      background-color: #f5f3ff;
     }
 
     .price-badge {
@@ -473,6 +472,7 @@
       font-weight: 600;
       margin-bottom: 8px;
       font-size: 0.9rem;
+      color: #7c2d12;
     }
 
     .price-meta {
@@ -491,7 +491,7 @@
       font-size: 0.73rem;
       color: var(--muted);
       margin-top: 7px;
-      border-top: 1px dashed rgba(196, 181, 253, 0.8);
+      border-top: 1px dashed rgba(196, 181, 253, 0.7);
       padding-top: 5px;
       opacity: 0;
       max-height: 0;
@@ -522,7 +522,6 @@
       border-radius: 14px;
       padding: 10px 10px 11px;
       border: 1px solid rgba(196, 181, 253, 0.9);
-      color: var(--text);
     }
 
     .type-title {
@@ -550,14 +549,13 @@
       border-radius: var(--radius-lg);
       padding: 13px 12px;
       border: 1px solid var(--border);
-      color: var(--text);
     }
 
     .step-number {
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      border: 1px solid var(--accent-strong);
+      border: 1px solid rgba(168, 85, 247, 0.95);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -578,14 +576,13 @@
     /* 신청 카드 / 공통 카드 */
 
     .request-card {
-      background: radial-gradient(circle at top, rgba(221, 214, 254, 0.9),
-        rgba(254, 249, 255, 0.98));
+      background: radial-gradient(circle at top, rgba(196, 181, 253, 0.35),
+        rgba(255, 255, 255, 0.95));
       border-radius: var(--radius-xl);
       padding: 20px 18px;
-      border: 1px solid rgba(196, 181, 253, 0.9);
+      border: 1px solid rgba(168, 85, 247, 0.8);
       box-shadow: var(--shadow-soft);
       text-align: center;
-      color: var(--text);
     }
 
     .request-title {
@@ -624,13 +621,13 @@
       gap: 6px;
       transition: background-color 0.18s ease, transform 0.18s ease,
         box-shadow 0.18s ease;
-      color: var(--muted);
+      color: var(--text);
     }
 
     .link-chip:hover {
       background-color: #ede9fe;
       transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.45);
+      box-shadow: 0 8px 20px rgba(167, 139, 250, 0.35);
     }
 
     /* 유의사항 / FAQ */
@@ -647,7 +644,6 @@
       padding: 16px 15px;
       border: 1px solid var(--border);
       font-size: 0.84rem;
-      color: var(--text);
     }
 
     .block-card h3 {
@@ -691,8 +687,8 @@
       padding: 26px 0 38px;
       font-size: 0.78rem;
       color: var(--muted);
-      border-top: 1px solid rgba(196, 181, 253, 0.8);
-      background: rgba(245, 243, 255, 0.95);
+      border-top: 1px solid rgba(196, 181, 253, 0.7);
+      background: linear-gradient(to top, rgba(237, 233, 254, 0.9), transparent);
     }
 
     .footer-inner {
@@ -715,12 +711,7 @@
         padding-bottom: 52px;
       }
 
-      /* 카드가 아래로 내려오도록 (텍스트 먼저 보이게) */
-      .hero-card {
-        order: 2;
-        margin-top: 18px;
-      }
-
+      /* 카드 순서는 DOM 순서 그대로: 텍스트 → 카드 */
       .cards-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -771,7 +762,6 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      /* 모바일에서 히어로가 첫 화면 꽉 채우도록 */
       .hero {
         min-height: calc(100vh - 70px);
         padding-top: 60px;
