@@ -711,7 +711,7 @@
         padding-bottom: 52px;
       }
 
-      /* 카드 순서는 DOM 순서 그대로: 텍스트 → 카드 */
+      /* hero-card 순서 변경 제거 → 항상 텍스트가 먼저 */
       .cards-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -761,28 +761,6 @@
       .types-grid {
         grid-template-columns: 1fr 1fr;
       }
-
-      .hero {
-        min-height: calc(100vh - 70px);
-        padding-top: 60px;
-        padding-bottom: 36px;
-        display: flex;
-        align-items: center;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-actions .btn-primary,
-      .hero-actions .btn-secondary {
-        width: 100%;
-        justify-content: center;
-      }
     }
 
     @media (max-width: 480px) {
@@ -804,7 +782,7 @@
 
       .hero {
         padding-top: 52px;
-        padding-bottom: 40px;
+        padding-bottom: 46px;
       }
     }
   </style>
@@ -1168,7 +1146,7 @@
           <div class="request-links">
             <a
               class="link-chip"
-              href="https://open.kakao.com/me/navitarot01"
+              href="https://open.kakao.com/me/naviyuhitarot01"
               target="_blank"
               rel="noopener"
             >
@@ -1200,9 +1178,8 @@
     }
 
     function goToMainRequest() {
-      window.open("https://open.kakao.com/me/navitarot01", "_blank");
+      window.open("https://open.kakao.com/me/naviyuhitarot01", "_blank");
     }
   </script>
 </body>
 </html>
-```0
